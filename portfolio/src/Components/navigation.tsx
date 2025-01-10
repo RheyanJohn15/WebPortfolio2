@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { m, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Navigation: React.FC = () => {
     const nav = [
