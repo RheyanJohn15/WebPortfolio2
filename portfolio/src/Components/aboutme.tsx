@@ -45,8 +45,8 @@ export default function AboutMe() {
             </BoxReveal>
           </div>
 
-          <div className="col-span-1 flex justify-center">
-              <Image src="/portf/me.jpg" className="rounded-full w-[24rem] h-[24rem] " width={500} height={500} alt="Rheyan John Blanco" />
+          <div className="col-span-1 flex justify-center items-center">
+              <Image src="/portf/me.jpg" className="rounded-full w-1/2" width={500} height={500} alt="Rheyan John Blanco" />
           </div>  
         </div>
     )

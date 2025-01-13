@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 const Ripple = dynamic(() => import("@/Components/ui/ripple"), { ssr: false });
 const HyperText = dynamic(() => import("@/Components/ui/hyper-text"), { ssr: false });
 import { textVal } from '@/data/text';
+import Experience from '@/Components/experience';
 
 export default function Home() {
   return (
@@ -57,11 +58,12 @@ export default function Home() {
               ease: "easeInOut",
             }}
           >
-            See More
+            {textVal.seeMore}
           </motion.h1>
         </div>
       </div>
 
+      <Experience />
       <AboutMe />
     </>
   );
