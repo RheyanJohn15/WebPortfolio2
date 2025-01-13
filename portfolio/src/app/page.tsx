@@ -5,7 +5,6 @@ import Navigation from "@/Components/navigation";
 import dynamic from "next/dynamic";
 const AboutMe = React.lazy(() => import('@/Components/aboutme'));
 import { motion } from "framer-motion";
-import AnimatedGradientText from '@/Components/ui/animated-gradient-text';
 const Ripple = dynamic(() => import("@/Components/ui/ripple"), { ssr: false });
 const HyperText = dynamic(() => import("@/Components/ui/hyper-text"), { ssr: false });
 
