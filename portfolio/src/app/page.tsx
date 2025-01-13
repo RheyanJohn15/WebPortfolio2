@@ -7,7 +7,7 @@ const AboutMe = React.lazy(() => import('@/components/aboutme'));
 import { motion } from "framer-motion";
 const Ripple = dynamic(() => import("@/components/ui/ripple"), { ssr: false });
 const HyperText = dynamic(() => import("@/components/ui/hyper-text"), { ssr: false });
-
+import { textVal } from '@/data/text';
 
 export default function Home() {
   return (
@@ -18,9 +18,9 @@ export default function Home() {
           <Navigation />
         </div>
         <div className="w-full text-center">
-          <HyperText className="text-2xl font-bold">Hi There 👋</HyperText>
-          <HyperText className="text-6xl font-bold">I am Rheyan John</HyperText>
-          <HyperText className="text-2xl font-bold">a Full stack web developer</HyperText>
+          <HyperText className="text-2xl font-bold">{textVal.intro1}</HyperText>
+          <HyperText className="text-6xl font-bold">{textVal.intro2}</HyperText>
+          <HyperText className="text-2xl font-bold">{textVal.intro3}</HyperText>
         </div>
 
         <div className='w-full absolute bottom-24 left-0 cursor-pointer flex flex-col gap-4 justify-center items-center'>
