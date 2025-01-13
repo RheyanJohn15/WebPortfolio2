@@ -1,12 +1,12 @@
 "use client";
 
 import React from 'react';
-import Navigation from "@/components/navigation";
+import Navigation from "@/Components/navigation";
 import dynamic from "next/dynamic";
-const AboutMe = React.lazy(() => import('@/components/aboutme'));
+const AboutMe = React.lazy(() => import('@/Components/aboutme'));
 import { motion } from "framer-motion";
-const Ripple = dynamic(() => import("@/components/ui/ripple"), { ssr: false });
-const HyperText = dynamic(() => import("@/components/ui/hyper-text"), { ssr: false });
+const Ripple = dynamic(() => import("@/Components/ui/ripple"), { ssr: false });
+const HyperText = dynamic(() => import("@/Components/ui/hyper-text"), { ssr: false });
 import { textVal } from '@/data/text';
 
 export default function Home() {

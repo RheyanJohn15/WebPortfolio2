@@ -1,4 +1,4 @@
-import BoxReveal from "./ui/box-reveal"
+import BoxReveal from "@/Components/ui/box-reveal";
 import Image from "next/image"
 import React from "react";
 import { textVal } from "@/data/text";
