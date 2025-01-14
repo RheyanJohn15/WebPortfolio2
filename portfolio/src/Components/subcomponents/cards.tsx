@@ -12,14 +12,13 @@ const Card: React.FC<CardProps> = ({ text, index }) => {
       className="card"
       initial={{
         opacity: 0,
-        // If the index is odd, slide from right instead of left
         x: index % 2 === 0 ? 50 : -50,
       }}
       whileInView={{
         opacity: 1,
-        x: 0, // Slide in to its original position
+        x: 0, 
         transition: {
-          duration: 1, // Animation duration
+          duration: 1,
         },
       }}
       viewport={{ once: true }}
