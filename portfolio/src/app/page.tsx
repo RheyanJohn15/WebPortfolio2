@@ -9,6 +9,7 @@ const Ripple = dynamic(() => import("@/Components/ui/ripple"), { ssr: false });
 const HyperText = dynamic(() => import("@/Components/ui/hyper-text"), { ssr: false });
 import { textVal } from '@/data/text';
 import Experience from '@/Components/experience';
+import Tools from '@/Components/tools';
 import Link from 'next/link';
 
 export default function Home() {
@@ -66,6 +67,7 @@ export default function Home() {
 
       <Experience />
       <AboutMe />
+      <Tools />
     </>
   );
 }
