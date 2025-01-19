@@ -9,6 +9,7 @@ const Ripple = dynamic(() => import("@/Components/ui/ripple"), { ssr: false });
 const HyperText = dynamic(() => import("@/Components/ui/hyper-text"), { ssr: false });
 import { textVal } from '@/data/text';
 import Experience from '@/Components/experience';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
           <HyperText className="text-2xl font-bold">{textVal.intro3}</HyperText>
         </div>
 
-        <div className='w-full absolute bottom-24 left-0 cursor-pointer flex flex-col gap-4 justify-center items-center'>
+        <Link href="/#experience" className='w-full absolute bottom-24 left-0 cursor-pointer flex flex-col gap-4 justify-center items-center'>
           <div className='flex gap-4'>
 
             {Array.from({ length: 3 }, (_, i) => (
@@ -60,7 +61,7 @@ export default function Home() {
           >
             {textVal.seeMore}
           </motion.h1>
-        </div>
+        </Link>
       </div>
 
       <Experience />

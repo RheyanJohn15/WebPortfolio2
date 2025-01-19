@@ -71,7 +71,9 @@ body {
   }
 }
 
-
+html{
+  scroll-behavior: smooth;
+}
 
 .exp {
   font-family: sans-serif;

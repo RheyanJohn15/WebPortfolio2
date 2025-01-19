@@ -1,26 +1,32 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Navigation: React.FC = () => {
-    const nav = [
-        {
-            name: "About Me",
-        },
-        {
-            name: "Experience",
-        },
-        {
-            name: "Tools"
-        },
-        {
-            name: "Projects"
-        }, 
-        {
-            name: "Hire Me"
-        }
-    ]
+  const nav = [
+    {
+      name: "Experience",
+      href: "/#experience"
+    },
+    {
+      name: "About Me",
+      href: "/#aboutme"
+    },
+    {
+      name: "Tools",
+      href: "/#tools",
+    },
+    {
+      name: "Projects",
+      href: "/#projects"
+    },
+    {
+      name: "Hire Me",
+      href: "/RheyanResume.pdf"
+    }
+  ]
   return (
-      <SlideTabs nav={nav} />
+    <SlideTabs nav={nav} />
   );
 };
 
@@ -30,13 +36,14 @@ interface Position {
   opacity: number;
 }
 interface NavItem {
-    name: string;
-  }
-  
+  name: string;
+  href: string;
+}
+
 type NavArray = NavItem[];
 
 interface SlideTabsProps {
-    nav: NavArray
+  nav: NavArray
 }
 
 const SlideTabs: React.FC<SlideTabsProps> = ({ nav }) => {
@@ -54,17 +61,17 @@ const SlideTabs: React.FC<SlideTabsProps> = ({ nav }) => {
           opacity: 0,
         }));
       }}
-      className="relative mx-auto flex w-fit rounded-full border-2 border-black bg-white p-1"
+      className="relative mx-auto z-50 flex w-fit rounded-full border-2 border-black bg-white p-1"
     >
-    {
-        nav.map((n, index)=> {
-            return(
-                <Tab key={index} setPosition={setPosition}>{n.name}</Tab>
-            )
+      {
+        nav.map((n, index) => {
+          return (
+            <Tab key={index} href={n.href} setPosition={setPosition}>{n.name}</Tab>
+          )
         })
-    }
-     
-    
+      }
+
+
       <Cursor position={position} />
     </ul>
   );
@@ -73,9 +80,10 @@ const SlideTabs: React.FC<SlideTabsProps> = ({ nav }) => {
 interface TabProps {
   children: React.ReactNode;
   setPosition: React.Dispatch<React.SetStateAction<Position>>;
+  href: string;
 }
 
-const Tab: React.FC<TabProps> = ({ children, setPosition }) => {
+const Tab: React.FC<TabProps> = ({ children, setPosition, href }) => {
   const ref = useRef<HTMLLIElement>(null);
 
   return (
@@ -94,7 +102,7 @@ const Tab: React.FC<TabProps> = ({ children, setPosition }) => {
       }}
       className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-white mix-blend-difference md:px-5 md:py-3 md:text-base"
     >
-      {children}
+      <Link href={href}>{children}</Link>
     </li>
   );
 };
