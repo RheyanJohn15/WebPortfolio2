@@ -62,7 +62,7 @@ export default function Footer() {
       setName("");
       setEmail("");
       setMessage("");
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.update(toastId, {
         render: `Failed to send email. Please try again.`,
         type: "error",
