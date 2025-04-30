@@ -11,11 +11,13 @@ import { textVal } from '@/data/text';
 import Experience from '@/Components/experience';
 import Tools from '@/Components/tools';
 import Link from 'next/link';
+import Projects from '@/Components/projects';
+import Footer from '@/Components/footer';
 
 export default function Home() {
   return (
     <>
-      <div className="w-full relative h-screen flex flex-col justify-center items-center">
+      <div className="w-full relative h-screen bg-gray-50 flex flex-col justify-center items-center">
         <Ripple />
         <div className="fixed w-full top-0 left-0 flex p-8 items-center justify-center">
           <Navigation />
@@ -68,6 +70,8 @@ export default function Home() {
       <Experience />
       <AboutMe />
       <Tools />
+      <Projects />
+      <Footer />
     </>
   );
 }

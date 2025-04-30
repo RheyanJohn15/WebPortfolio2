@@ -70,9 +70,9 @@ export default function Experience() {
     ];
 
     return (
-        <div id="experience" className="w-full overflow-hidden">
+        <div id="experience" className="w-full overflow-hidden py-16 px-4 md:px-16">
       
-            <div className="exp px-8">
+            <div className="exp flex flex-col items-center gap-4">
                 {items.map((item, i) => (
                     <Card key={i} header={item.header} year={item.year} position={item.pos} company={item.comp} image={item.image} desc={item.desc} isHeader={item.isHeader} index={i} />
                 ))}

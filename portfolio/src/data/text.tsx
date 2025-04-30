@@ -36,5 +36,14 @@ export const textVal = {
         desc3: "Beyond technical expertise, I excel at problem-solving and have a proven ability to break down complex challenges into actionable solutions. My strong communication and teamwork skills allow me to contribute meaningfully to a collaborative environment, whether leading initiatives or supporting others to achieve shared goals.",
         desc4: "What sets me apart is my ability to quickly adapt to new frameworks, languages, and tools. I am committed to continuous learning and staying ahead in the ever-evolving tech landscape, consistently delivering solutions that exceed expectations.",
         desc5: "From building dynamic, responsive user interfaces to designing robust and secure back-end systems, I thrive in environments that challenge me to innovate and grow. I am passionate about creating impactful software and contributing to a positive and productive team culture.",
+    },
+
+
+    tools: {
+        header: "Technologies & Tools I Work With"
+    },
+
+    projects: {
+        header: "What I've Built"
     }
   };

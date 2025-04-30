@@ -22,7 +22,7 @@ const Navigation: React.FC = () => {
     },
     {
       name: "Hire Me",
-      href: "/RheyanResume.pdf"
+      href: "/ResumeRheyanJohnBlanco.pdf"
     }
   ]
   return (
@@ -100,7 +100,7 @@ const Tab: React.FC<TabProps> = ({ children, setPosition, href }) => {
           opacity: 1,
         });
       }}
-      className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-white mix-blend-difference md:px-5 md:py-3 md:text-base"
+      className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-black hover:text-white  md:px-5 md:py-3 md:text-base"
     >
       <Link href={href}>{children}</Link>
     </li>
