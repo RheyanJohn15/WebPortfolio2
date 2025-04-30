@@ -52,7 +52,6 @@ export default function Footer() {
       });
       const data = await res.json();
       console.log(data);
-
       toast.update(toastId, {
         render: "Email sent successfully!",
         type: "success",
@@ -65,11 +64,12 @@ export default function Footer() {
       setMessage("");
     } catch (error: any) {
       toast.update(toastId, {
-        render: "Failed to send email. Please try again.",
+        render: `Failed to send email. Please try again.`,
         type: "error",
         isLoading: false,
         autoClose: 3000,
       });
+      console.log(error);
     }
 
     setLoading(false);
