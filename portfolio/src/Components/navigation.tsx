@@ -61,7 +61,7 @@ const SlideTabs: React.FC<SlideTabsProps> = ({ nav }) => {
           opacity: 0,
         }));
       }}
-      className="relative mx-auto z-50 flex w-fit rounded-full border-2 border-black bg-white p-1"
+      className="relative mx-auto  flex w-fit rounded-full border-2 border-black bg-white p-1"
     >
       {
         nav.map((n, index) => {
