@@ -30,7 +30,7 @@ interface ContentArray {
   }
 
 interface TablesProp {
-    title: String,
+    title: string,
     contents: ContentArray[],
 }
 
