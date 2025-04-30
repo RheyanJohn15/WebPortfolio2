@@ -45,5 +45,12 @@ export const textVal = {
 
     projects: {
         header: "What I've Built"
+    },
+
+    footer: {
+        linkedin: "https://www.linkedin.com/in/rheyan-john-blanco-256090287/",
+        github: "https://github.com/RheyanJohn15",
+        number: "+639275333250",
+        email: "rheyanjohnblancogwapo@gmail.com"
     }
   };

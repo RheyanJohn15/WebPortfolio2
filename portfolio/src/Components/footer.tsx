@@ -1,4 +1,5 @@
 import React from "react";
+import { textVal } from "@/data/text";
 
 export default function Footer() {
   return (
@@ -7,28 +8,28 @@ export default function Footer() {
         {/* Contact Info */}
         <div className="flex flex-col gap-4">
           <h2 className="text-2xl font-semibold mb-4 text-gray-900">Contact Me</h2>
-          <p><strong>Phone:</strong> 09275333250</p>
-          <p><strong>Email:</strong> rheyanjohnblancogwapo@gmail.com</p>
+          <p><strong>Phone:</strong> {textVal.footer.number}</p>
+          <p><strong>Email:</strong> {textVal.footer.email}</p>
           <p>
             <strong>LinkedIn:</strong>{" "}
             <a
-              href="https://www.linkedin.com/in/rheyan-john-blanco-256090287/"
+              href={textVal.footer.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
-              https://www.linkedin.com/in/rheyan-john-blanco-256090287/
+              {textVal.footer.linkedin}
             </a>
           </p>
           <p>
             <strong>GitHub:</strong>{" "}
             <a
-              href="https://github.com/RheyanJohn15"
+              href={textVal.footer.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
-                https://github.com/RheyanJohn15
+                {textVal.footer.github}
             </a>
           </p>
           <a
