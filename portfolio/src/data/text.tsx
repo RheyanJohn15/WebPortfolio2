@@ -8,6 +8,8 @@ export const textVal = {
     experience: {
         company1: "Core Support Hub",
         position1: "Software Engineer",
+        company2: "Fuzemobi",
+        position2: "Software Engineer",
         header: "My Work Experiences",
         exp1: "Developed a feature-rich website for Coresupport Hub",
         expDesc1: "Utilized Next.js and React for a dynamic frontend and Django with PostgreSQL for a robust backend architecture. Hosted the application on Vercel for seamless deployment and scalability",
@@ -26,7 +28,10 @@ export const textVal = {
         exp5Year: "November 2024 - December 2024",
         exp6: "Contributed to an ERP Project with CRM Module",
         expDesc6: "Played a key role in the development of an ERP system with a CRM module using ASP.NET and SQL stored procedures, ensuring efficient data management and seamless integration of customer relationship processes",
-        exp6Year: "May 2024 - Present",
+        exp6Year: "May 2024 - August 2024",
+        exp7: "Contributed to the Development of new Features in the DCC portal",
+        expDesc7: "Design UI/UX of the DCC(Digital Communications Company) Portal new features and modules using VueJS and use laravel to contribute in the creation of there backend API's, this software is used by the telecommunications company in the US to provision or deprovision eSims or pSims by different carriers under the same company. ",
+        exp7Year: "February 2025 - April 2025"
     }, 
 
     aboutme:{

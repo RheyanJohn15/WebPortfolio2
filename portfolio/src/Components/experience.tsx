@@ -67,6 +67,17 @@ export default function Experience() {
             pos: textVal.experience.position1,
             year: textVal.experience.exp6Year,
         },
+
+        {
+            header: textVal.experience.exp7,
+            desc: textVal.experience.expDesc7,
+            image: "/portf/vue-laravel.png",
+            isHeader: false,
+            comp: textVal.experience.company2,
+            pos: textVal.experience.position2,
+            year: textVal.experience.exp7Year,
+        },
+
     ];
 
     return (
