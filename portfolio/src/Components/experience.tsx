@@ -8,7 +8,11 @@ export default function Experience() {
   return (
     <section id="experience" className="relative border-t border-border bg-noise">
       <div className="section-shell">
-        <SectionHeading eyebrow="01 — Career" title="Experience" />
+        <SectionHeading
+          eyebrow="01 — Career"
+          title="Experience"
+          description="2+ years shipping production systems — from intern to Technical Engineering Lead and VP of Global Technology."
+        />
 
         <ol className="relative ml-3 border-l border-border md:ml-4">
           {experience.map((item, index) => (

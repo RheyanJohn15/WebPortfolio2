@@ -28,7 +28,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mono-label"
         >
-          {site.location}
+          {site.location} · {site.yearsExperience} years experience
         </motion.p>
 
         <motion.h1

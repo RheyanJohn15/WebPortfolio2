@@ -3,10 +3,11 @@ export const site = {
   title: "Software Engineer",
   tagline: "Full-spectrum software engineer & technical owner",
   location: "Bacolod City, Philippines",
+  yearsExperience: "2+",
   heroSupport:
-    "Building and operating production systems end-to-end — architecture, full-stack delivery, cloud infrastructure, security, and AI-powered business workflows.",
+    "2+ years building and operating production systems end-to-end — architecture, full-stack delivery, cloud infrastructure, security, and AI-powered business workflows.",
   summary:
-    "Software Engineer, Full Stack Developer, DevOps Engineer, and technical product builder from the Philippines. Focused on production-ready web applications, SaaS platforms, ERP and business systems, recruitment platforms, AI-powered products, APIs, and cloud infrastructure.",
+    "Software Engineer with 2+ years of professional experience as a Full Stack Developer, DevOps Engineer, and technical product builder from the Philippines. Focused on production-ready web applications, SaaS platforms, ERP and business systems, recruitment platforms, AI-powered products, APIs, and cloud infrastructure.",
   about: [
     "I work across the entire software development lifecycle—from understanding business requirements and designing system architecture, to building frontend applications, developing backend APIs, managing databases, integrating third-party services, establishing CI/CD pipelines, deploying systems, securing infrastructure, troubleshooting production issues, and continuously improving the product.",
     "My strength is not being limited to one layer of the stack. I’m comfortable taking ownership of a complete system and making decisions across frontend architecture, backend architecture, databases, infrastructure, deployment, integrations, security, performance, user experience, analytics, and operational reliability.",
