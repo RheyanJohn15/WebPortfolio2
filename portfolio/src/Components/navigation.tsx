@@ -1,125 +1,125 @@
-import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { site } from "@/data/site";
 
-const Navigation: React.FC = () => {
-  const nav = [
-    {
-      name: "Experience",
-      href: "/#experience"
-    },
-    {
-      name: "About Me",
-      href: "/#aboutme"
-    },
-    {
-      name: "Tools",
-      href: "/#tools",
-    },
-    {
-      name: "Projects",
-      href: "/#projects"
-    },
-    {
-      name: "Hire Me",
-      href: "/ResumeRheyanJohnBlanco.pdf"
-    }
-  ]
-  return (
-    <SlideTabs nav={nav} />
-  );
-};
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/expertise", label: "Expertise" },
+  { href: "/work", label: "Work" },
+  { href: "/approach", label: "Approach" },
+  { href: "/#contact", label: "Contact" },
+];
 
-interface Position {
-  left: number;
-  width: number;
-  opacity: number;
-}
-interface NavItem {
-  name: string;
-  href: string;
-}
+export default function Navigation() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
-type NavArray = NavItem[];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-interface SlideTabsProps {
-  nav: NavArray
-}
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
-const SlideTabs: React.FC<SlideTabsProps> = ({ nav }) => {
-  const [position, setPosition] = useState<Position>({
-    left: 0,
-    width: 0,
-    opacity: 0,
-  });
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("/#")) return pathname === "/" && href.includes("contact");
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
-    <ul
-      onMouseLeave={() => {
-        setPosition((prev) => ({
-          ...prev,
-          opacity: 0,
-        }));
-      }}
-      className="relative mx-auto  flex w-fit rounded-full border-2 border-black bg-white p-1"
+    <motion.header
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        scrolled || open
+          ? "border-b border-border/80 bg-background/85 backdrop-blur-md"
+          : "bg-transparent"
+      )}
     >
-      {
-        nav.map((n, index) => {
-          return (
-            <Tab key={index} href={n.href} setPosition={setPosition}>{n.name}</Tab>
-          )
-        })
-      }
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-8">
+        <Link
+          href="/"
+          className="font-mono text-sm tracking-tight text-foreground transition-colors hover:text-accent"
+        >
+          <span className="text-accent">~/</span>
+          {site.name.split(" ")[0].toLowerCase()}
+        </Link>
 
+        <nav className="hidden items-center gap-7 md:flex">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "font-mono text-xs uppercase tracking-[0.14em] transition-colors",
+                isActive(link.href)
+                  ? "text-accent"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <a
+            href={site.resumePath}
+            download
+            className="rounded-md border border-accent/40 bg-accent/10 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.14em] text-accent transition-colors hover:bg-accent/20"
+          >
+            CV
+          </a>
+        </nav>
 
-      <Cursor position={position} />
-    </ul>
+        <button
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="text-foreground md:hidden"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="border-b border-border bg-background/95 px-6 py-4 backdrop-blur-md md:hidden">
+          <div className="flex flex-col gap-4">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "font-mono text-sm uppercase tracking-[0.14em]",
+                  isActive(link.href) ? "text-accent" : "text-muted-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href={site.resumePath}
+              download
+              onClick={() => setOpen(false)}
+              className="font-mono text-sm uppercase tracking-[0.14em] text-accent"
+            >
+              Download CV
+            </a>
+          </div>
+        </div>
+      )}
+    </motion.header>
   );
-};
-
-interface TabProps {
-  children: React.ReactNode;
-  setPosition: React.Dispatch<React.SetStateAction<Position>>;
-  href: string;
 }
-
-const Tab: React.FC<TabProps> = ({ children, setPosition, href }) => {
-  const ref = useRef<HTMLLIElement>(null);
-
-  return (
-    <li
-      ref={ref}
-      onMouseEnter={() => {
-        if (!ref?.current) return;
-
-        const { width } = ref.current.getBoundingClientRect();
-
-        setPosition({
-          left: ref.current.offsetLeft,
-          width,
-          opacity: 1,
-        });
-      }}
-      className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-black hover:text-white  md:px-5 md:py-3 md:text-base"
-    >
-      <Link href={href}>{children}</Link>
-    </li>
-  );
-};
-
-interface CursorProps {
-  position: Position;
-}
-
-const Cursor: React.FC<CursorProps> = ({ position }) => {
-  return (
-    <motion.li
-      animate={{
-        ...position,
-      }}
-      className="absolute z-0 h-7 rounded-full bg-black md:h-12"
-    />
-  );
-};
-
-export default Navigation;

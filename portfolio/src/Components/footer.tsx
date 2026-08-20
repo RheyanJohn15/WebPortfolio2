@@ -1,7 +1,11 @@
+"use client";
+
 import React, { useState } from "react";
-import { textVal } from "@/data/text";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { site } from "@/data/site";
 
 export default function Footer() {
   const [name, setName] = useState("");
@@ -9,20 +13,18 @@ export default function Footer() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  function isValidEmail(email: string): boolean {
-    // Regular expression for basic email validation.
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+  function isValidEmail(value: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
 
-  const sendEmail = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const toastId = toast.loading("Sending email...");
+    const toastId = toast.loading("Sending message...");
 
-    if(!name || !email || !message){
+    if (!name || !email || !message) {
       toast.update(toastId, {
-        render: "Failed to send email. All fields are required",
+        render: "All fields are required.",
         type: "error",
         isLoading: false,
         autoClose: 3000,
@@ -31,9 +33,9 @@ export default function Footer() {
       return;
     }
 
-    if(!isValidEmail(email)){
+    if (!isValidEmail(email)) {
       toast.update(toastId, {
-        render: "Failed to send email. The email address provided is invalid.",
+        render: "Please enter a valid email address.",
         type: "error",
         isLoading: false,
         autoClose: 3000,
@@ -45,130 +47,159 @@ export default function Footer() {
     try {
       const res = await fetch("/api/send-email", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, message }),
       });
-      const data = await res.json();
-      console.log(data);
+
+      if (!res.ok) throw new Error("Failed");
+
       toast.update(toastId, {
-        render: "Email sent successfully!",
+        render: "Message sent successfully.",
         type: "success",
         isLoading: false,
         autoClose: 3000,
       });
-
       setName("");
       setEmail("");
       setMessage("");
-    } catch (error: unknown) {
+    } catch {
       toast.update(toastId, {
-        render: `Failed to send email. Please try again.`,
+        render: "Failed to send message. Please try again.",
         type: "error",
         isLoading: false,
         autoClose: 3000,
       });
-      console.log(error);
     }
 
     setLoading(false);
   };
 
-  return (
-    <footer
-      id="footer"
-      className="w-full bg-white text-gray-800 px-8 py-12 border-t border-gray-300"
-    >
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-        {/* Contact Info */}
-        <div className="flex flex-col gap-4">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900">
-            Contact Me
-          </h2>
-          <p>
-            <strong>Phone:</strong> {textVal.footer.number}
-          </p>
-          <p>
-            <strong>Email:</strong> {textVal.footer.email}
-          </p>
-          <p>
-            <strong>LinkedIn:</strong>{" "}
-            <a
-              href={textVal.footer.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              {textVal.footer.linkedin}
-            </a>
-          </p>
-          <p>
-            <strong>GitHub:</strong>{" "}
-            <a
-              href={textVal.footer.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              {textVal.footer.github}
-            </a>
-          </p>
-          <a
-            href="/ResumeRheyanJohnBlanco.pdf"
-            download
-            className="mt-4 inline-block bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition"
-          >
-            Hire Me (Download CV)
-          </a>
-        </div>
+  const contacts = [
+    {
+      label: "Email",
+      value: site.contact.email,
+      href: `mailto:${site.contact.email}`,
+      icon: Mail,
+    },
+    {
+      label: "Phone",
+      value: site.contact.phone,
+      href: `tel:${site.contact.phone}`,
+      icon: Phone,
+    },
+    {
+      label: "LinkedIn",
+      value: "linkedin.com/in/rheyan-john-blanco",
+      href: site.contact.linkedin,
+      icon: Linkedin,
+    },
+    {
+      label: "GitHub",
+      value: "github.com/RheyanJohn15",
+      href: site.contact.github,
+      icon: Github,
+    },
+  ];
 
-        {/* Message Form */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900">
-            Send a Message
+  return (
+    <footer id="contact" className="relative border-t border-border bg-noise">
+      <div className="section-shell pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-14"
+        >
+          <p className="mono-label mb-3">05 — Contact</p>
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+            Let&apos;s work together
           </h2>
-          <form className="flex flex-col gap-4">
+          <p className="mt-3 max-w-xl text-muted-foreground">
+            Open to engineering leadership, full-stack roles, and consulting on
+            SaaS and cloud systems.
+          </p>
+        </motion.div>
+
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+          <div className="space-y-6">
+            {contacts.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="group flex items-start gap-4"
+              >
+                <span className="mt-0.5 rounded border border-border bg-card p-2 text-accent">
+                  <item.icon size={16} />
+                </span>
+                <span>
+                  <span className="block font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                    {item.label}
+                  </span>
+                  <span className="text-sm text-foreground transition-colors group-hover:text-accent">
+                    {item.value}
+                  </span>
+                </span>
+              </a>
+            ))}
+
+            <a
+              href={site.resumePath}
+              download
+              className="mt-4 inline-flex rounded-md border border-accent/40 bg-accent/10 px-5 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-accent transition-colors hover:bg-accent/20"
+            >
+              Download CV
+            </a>
+          </div>
+
+          <form onSubmit={sendEmail} className="flex flex-col gap-4">
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              placeholder="Your Name"
-              className="p-3 rounded border border-gray-300 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Your name"
+              className="rounded-md border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40"
             />
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              placeholder="Your Email"
-              className="p-3 rounded border border-gray-300 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Your email"
+              className="rounded-md border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40"
             />
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Your Message"
-              rows={4}
-              className="p-3 rounded border border-gray-300 bg-white text-gray-800 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Your message"
+              rows={5}
+              className="resize-none rounded-md border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40"
             />
             <button
-              onClick={sendEmail}
               type="submit"
               disabled={loading}
-              className={`bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-md transition ${
-                loading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+              className="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {loading ? "Sending..." : "Send Message"}
+              {loading ? "Sending..." : "Send message"}
             </button>
           </form>
         </div>
-      </div>
 
-      <div className="text-center text-sm text-gray-500 mt-12">
-        &copy; {new Date().getFullYear()} Rheyan John Blanco. All rights
-        reserved.
+        <div className="mt-16 border-t border-border pt-8 text-center font-mono text-xs text-muted-foreground">
+          © {new Date().getFullYear()} {site.name}
+        </div>
       </div>
-      <ToastContainer />
+      <ToastContainer
+        theme="dark"
+        position="bottom-right"
+        toastStyle={{
+          background: "hsl(222 22% 9%)",
+          border: "1px solid hsl(220 14% 18%)",
+          color: "hsl(210 20% 96%)",
+          fontFamily: "var(--font-sans)",
+        }}
+      />
     </footer>
   );
 }
