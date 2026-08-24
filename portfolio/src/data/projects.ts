@@ -5,6 +5,7 @@ export type WorkItem = {
   href?: string;
   externalUrl?: string;
   image?: string;
+  logo?: string;
   tech: string[];
   featured?: boolean;
   category: "major" | "supporting";
@@ -17,6 +18,7 @@ export const workItems: WorkItem[] = [
     description:
       "Vertical SaaS ERP and AI platform for painting businesses — ScopeLab, SalesLab, SiteLab, Media Lab, and Metrics Lab on a multi-tenant Laravel + Next.js stack.",
     href: "/work/tikrr",
+    logo: "/logos/tikrr.png",
     tech: ["Laravel", "Next.js", "PostgreSQL", "OpenAI", "GCP"],
     featured: true,
     category: "major",
@@ -27,6 +29,7 @@ export const workItems: WorkItem[] = [
     description:
       "Recruitment and talent platform with separate portals for job seekers, clients, recruiters, and admins—plus a Philippines-focused job-seeker experience.",
     href: "/work/click",
+    logo: "/logos/clickglobaltalent.png",
     tech: ["Next.js", "Laravel", "PostgreSQL", "Vercel", "GCP"],
     featured: true,
     category: "major",
@@ -37,6 +40,8 @@ export const workItems: WorkItem[] = [
     description:
       "Company platform and site with admin tooling for attendance, visitor messages, and newsletter management.",
     externalUrl: "https://coresupporthub.com",
+    image: "/projects/coresupporthub.png",
+    logo: "/logos/coresupporthub.png",
     tech: ["Next.js", "React", "Django", "PostgreSQL"],
     category: "supporting",
   },
@@ -46,6 +51,8 @@ export const workItems: WorkItem[] = [
     description:
       "Coworking management system for check-in/out, subscriptions, time-based payments, and sales analytics.",
     externalUrl: "https://orangeshire.com",
+    image: "/projects/orangeshire.png",
+    logo: "/logos/orangeshire.png",
     tech: ["Laravel", "jQuery", "MySQL"],
     category: "supporting",
   },
@@ -55,6 +62,8 @@ export const workItems: WorkItem[] = [
     description:
       "Nationwide QR raffle system supporting 250+ retail stores and ~100,000 entries.",
     externalUrl: "https://promo.unioil.com",
+    image: "/projects/raffledraw.png",
+    logo: "/logos/unioil.png",
     tech: ["Laravel", "jQuery", "MySQL", "QR"],
     category: "supporting",
   },
@@ -71,6 +80,7 @@ export const workItems: WorkItem[] = [
     title: "Waste Management Systems",
     description:
       "Logistics and operations software for collection scheduling, routing, and municipal workflows.",
+    image: "/projects/waste_management.png",
     tech: ["Laravel", "Analytics"],
     category: "supporting",
   },

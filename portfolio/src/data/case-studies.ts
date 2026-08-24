@@ -8,6 +8,7 @@ export type CaseStudy = {
   slug: string;
   title: string;
   company: string;
+  logo?: string;
   outcome: string;
   summary: string[];
   architecture: string[];
@@ -27,6 +28,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "tikrr",
     title: "Tikrr ERP",
     company: "Tikrr LLC",
+    logo: "/logos/tikrr.png",
     outcome:
       "A multi-tenant SaaS ERP and AI platform purpose-built for painting contractor workflows—from estimating and CRM through production, media, and analytics.",
     summary: [
@@ -110,6 +112,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "click",
     title: "Click Global Talent / Recruitment Platform",
     company: "Click Global Talent",
+    logo: "/logos/clickglobaltalent.png",
     outcome:
       "A recruitment and talent platform connecting companies with candidates—multiple portals sharing a backend while reflecting real recruitment workflows.",
     summary: [

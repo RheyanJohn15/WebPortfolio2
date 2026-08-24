@@ -33,6 +33,7 @@ export type ExperienceItem = {
   id: string;
   role: string;
   company: string;
+  logo?: string;
   dates: string;
   bullets: string[];
 };
@@ -42,6 +43,7 @@ export const experience: ExperienceItem[] = [
     id: "tikrr-lead",
     role: "Technical Engineering Lead",
     company: "Tikrr LLC",
+    logo: "/logos/tikrr.png",
     dates: "Jun 2026 – Present",
     bullets: [
       "Promoted from Founding Engineer to Technical Engineering Lead, leading technical architecture, engineering strategy, and product development for Tikrr, a vertical SaaS ERP and AI platform for painting businesses.",
@@ -53,6 +55,7 @@ export const experience: ExperienceItem[] = [
     id: "click-vp",
     role: "VP of Global Technology",
     company: "Click Global Talent",
+    logo: "/logos/clickglobaltalent.png",
     dates: "Jan 2026 – Present",
     bullets: [
       "Led global technology operations, overseeing IT infrastructure, technical support, software development, and digital platforms supporting recruitment operations.",
@@ -64,6 +67,7 @@ export const experience: ExperienceItem[] = [
     id: "tikrr-fullstack",
     role: "Full Stack Web Developer",
     company: "Tikrr LLC",
+    logo: "/logos/tikrr.png",
     dates: "Nov 2025 – Jun 2026",
     bullets: [
       "Architected and executed Tikrr’s migration from a client-side architecture to a secure, scalable multi-tenant ERP platform, leading backend architecture with Laravel and PostgreSQL while developing the Next.js frontend and APIs.",
@@ -75,6 +79,7 @@ export const experience: ExperienceItem[] = [
     id: "csh-consultant",
     role: "Software Engineer Consultant",
     company: "Core Support Hub",
+    logo: "/logos/coresupporthub.png",
     dates: "May 2025 – Present",
     bullets: [
       "Provide software engineering and technical consulting across client projects, owning full-stack development, architecture, and technical implementation.",
@@ -86,6 +91,7 @@ export const experience: ExperienceItem[] = [
     id: "tikrr-frontend",
     role: "Front End Web Developer",
     company: "Tikrr LLC",
+    logo: "/logos/tikrr.png",
     dates: "May 2025 – Nov 2025",
     bullets: [
       "Developed and maintained Tikrr’s SaaS ERP frontend using Next.js and Firebase, delivering responsive, scalable, and user-focused web applications.",
@@ -97,6 +103,7 @@ export const experience: ExperienceItem[] = [
     id: "csh-engineer",
     role: "Software Engineer",
     company: "Core Support Hub",
+    logo: "/logos/coresupporthub.png",
     dates: "Jun 2024 – May 2025",
     bullets: [
       "Served as a primary developer and technical lead, owning architecture and implementation across multiple SaaS, ERP, automation, and client software projects.",
@@ -108,6 +115,7 @@ export const experience: ExperienceItem[] = [
     id: "csh-intern",
     role: "Software Engineer Intern",
     company: "Core Support Hub",
+    logo: "/logos/coresupporthub.png",
     dates: "Jun 2024 – May 2025",
     bullets: [
       "Supported the development and maintenance of web applications and internal business systems, gaining hands-on experience in full-stack development.",

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageHeader } from "@/Components/page-header";
+import { ProjectCover } from "@/Components/project-cover";
 import { workItems } from "@/data/projects";
 
 export const metadata: Metadata = {
@@ -30,30 +32,39 @@ export default function WorkPage() {
               <Link
                 key={item.id}
                 href={item.href ?? "/work"}
-                className="group flex items-start justify-between gap-6 border-t border-border py-10 last:border-b"
+                className="group grid gap-6 border-t border-border py-10 last:border-b sm:grid-cols-[minmax(0,240px)_1fr] sm:items-center sm:gap-8"
               >
-                <div>
-                  <h3 className="text-2xl font-medium tracking-tight transition-colors group-hover:text-accent">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                    {item.description}
-                  </p>
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {item.tech.map((t) => (
-                      <li
-                        key={t}
-                        className="rounded border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground"
-                      >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <ArrowUpRight
-                  className="mt-1 shrink-0 text-accent opacity-50 group-hover:opacity-100"
-                  size={20}
+                <ProjectCover
+                  id={item.id}
+                  title={item.title}
+                  image={item.image}
+                  logo={item.logo}
+                  sizes="(min-width: 640px) 240px, 100vw"
                 />
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-2xl font-medium tracking-tight transition-colors group-hover:text-accent">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                      {item.description}
+                    </p>
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {item.tech.map((t) => (
+                        <li
+                          key={t}
+                          className="rounded border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground"
+                        >
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <ArrowUpRight
+                    className="mt-1 shrink-0 text-accent opacity-50 group-hover:opacity-100"
+                    size={20}
+                  />
+                </div>
               </Link>
             ))}
           </div>
@@ -98,9 +109,22 @@ function WorkCard({
 }) {
   return (
     <>
-      <h3 className="font-medium transition-colors group-hover:text-accent">
-        {item.title}
-      </h3>
+      <div className="flex items-center gap-2.5">
+        {item.logo && (
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded border border-border bg-card p-1.5">
+            <Image
+              src={item.logo}
+              alt=""
+              width={16}
+              height={16}
+              className="h-full w-full object-contain"
+            />
+          </span>
+        )}
+        <h3 className="font-medium transition-colors group-hover:text-accent">
+          {item.title}
+        </h3>
+      </div>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         {item.description}
       </p>

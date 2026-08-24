@@ -8,11 +8,13 @@ import ExpertiseSnapshot from "@/Components/expertise-snapshot";
 import AboutMe from "@/Components/aboutme";
 import Footer from "@/Components/footer";
 import { PrincipleBand } from "@/Components/principle-band";
+import { TechMarquee } from "@/Components/tech-marquee";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Hero />
+      <TechMarquee />
       <HomePipeline />
       <Experience />
       <FeaturedWork />

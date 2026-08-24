@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/Components/page-header";
+import { ProjectCover } from "@/Components/project-cover";
 import { workItems } from "@/data/projects";
 
 export default function FeaturedWork() {
@@ -33,7 +35,17 @@ export default function FeaturedWork() {
               transition={{ duration: 0.45, delay: index * 0.06 }}
               className="border-t border-border py-10 first:border-t-0 first:pt-0"
             >
-              <Link href={item.href ?? "/work"} className="group block">
+              <Link
+                href={item.href ?? "/work"}
+                className="group grid gap-6 sm:grid-cols-[minmax(0,280px)_1fr] sm:items-center sm:gap-8"
+              >
+                <ProjectCover
+                  id={item.id}
+                  title={item.title}
+                  image={item.image}
+                  logo={item.logo}
+                  sizes="(min-width: 640px) 280px, 100vw"
+                />
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="text-2xl font-medium tracking-tight transition-colors group-hover:text-accent">
@@ -70,14 +82,27 @@ export default function FeaturedWork() {
               href={item.externalUrl ?? item.href ?? "/work"}
               target={item.externalUrl ? "_blank" : undefined}
               rel={item.externalUrl ? "noopener noreferrer" : undefined}
-              className="group"
+              className="group flex items-start gap-3"
             >
-              <h4 className="font-medium transition-colors group-hover:text-accent">
-                {item.title}
-              </h4>
-              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                {item.description}
-              </p>
+              {item.logo && (
+                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded border border-border bg-card p-1.5">
+                  <Image
+                    src={item.logo}
+                    alt=""
+                    width={18}
+                    height={18}
+                    className="h-full w-full object-contain"
+                  />
+                </span>
+              )}
+              <div>
+                <h4 className="font-medium transition-colors group-hover:text-accent">
+                  {item.title}
+                </h4>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
             </a>
           ))}
         </div>

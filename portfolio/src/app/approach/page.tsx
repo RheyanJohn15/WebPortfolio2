@@ -5,6 +5,12 @@ import { Pipeline } from "@/Components/pipeline";
 import { PrincipleBand } from "@/Components/principle-band";
 import { SkillChips } from "@/Components/skill-chips";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   approachIntro,
   approachPrinciples,
   businessThinkingIntro,
@@ -13,6 +19,7 @@ import {
   identityCloser,
   mindsetIntro,
   mindsetQuestions,
+  ownershipPipeline,
   releasePractices,
   testingPractices,
 } from "@/data/approach";
@@ -33,6 +40,41 @@ export default function ApproachPage() {
           title="How I engineer"
           description="Practical architecture, business-domain understanding, and ownership across the full product lifecycle."
         />
+
+        <dl className="mb-16 flex flex-wrap gap-x-10 gap-y-4 border-y border-border py-6">
+          <div>
+            <dt className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+              Principles
+            </dt>
+            <dd className="mt-1 font-mono text-2xl text-foreground">
+              {approachPrinciples.length}
+            </dd>
+          </div>
+          <div>
+            <dt className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+              Pipeline stages
+            </dt>
+            <dd className="mt-1 font-mono text-2xl text-foreground">
+              {ownershipPipeline.length}
+            </dd>
+          </div>
+          <div>
+            <dt className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+              Release practices
+            </dt>
+            <dd className="mt-1 font-mono text-2xl text-foreground">
+              {releasePractices.length}
+            </dd>
+          </div>
+          <div>
+            <dt className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+              Testing disciplines
+            </dt>
+            <dd className="mt-1 font-mono text-2xl text-foreground">
+              {testingPractices.length}
+            </dd>
+          </div>
+        </dl>
 
         <div className="mb-16 space-y-4 border-b border-border pb-12">
           <p className="max-w-3xl text-base leading-relaxed text-foreground md:text-lg">
@@ -95,64 +137,83 @@ export default function ApproachPage() {
         </section>
 
         <section>
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight">
-            Engineering mindset
-          </h2>
-          <p className="mb-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            {mindsetIntro}
-          </p>
-          <ul className="grid gap-2 sm:grid-cols-2">
-            {mindsetQuestions.map((q) => (
-              <li
-                key={q}
-                className="border-l border-accent/30 pl-3 text-sm text-muted-foreground"
-              >
-                {q}
-              </li>
-            ))}
-          </ul>
-        </section>
+          <p className="mono-label mb-6">Go deeper</p>
+          <Accordion type="multiple">
+            <AccordionItem value="mindset">
+              <AccordionTrigger className="text-left text-lg font-medium tracking-tight hover:no-underline">
+                Engineering mindset
+              </AccordionTrigger>
+              <AccordionContent>
+                <p className="mb-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                  {mindsetIntro}
+                </p>
+                <ul className="grid gap-2 sm:grid-cols-2">
+                  {mindsetQuestions.map((q) => (
+                    <li
+                      key={q}
+                      className="border-l border-accent/30 pl-3 text-sm text-muted-foreground"
+                    >
+                      {q}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
 
-        <section>
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight">
-            Business & product thinking
-          </h2>
-          <p className="mb-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            {businessThinkingIntro}
-          </p>
-          <ul className="grid gap-2 sm:grid-cols-2">
-            {businessThinkingQuestions.map((q) => (
-              <li
-                key={q}
-                className="border-l border-accent/30 pl-3 text-sm text-muted-foreground"
-              >
-                {q}
-              </li>
-            ))}
-          </ul>
-        </section>
+            <AccordionItem value="business">
+              <AccordionTrigger className="text-left text-lg font-medium tracking-tight hover:no-underline">
+                Business & product thinking
+              </AccordionTrigger>
+              <AccordionContent>
+                <p className="mb-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                  {businessThinkingIntro}
+                </p>
+                <ul className="grid gap-2 sm:grid-cols-2">
+                  {businessThinkingQuestions.map((q) => (
+                    <li
+                      key={q}
+                      className="border-l border-accent/30 pl-3 text-sm text-muted-foreground"
+                    >
+                      {q}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
 
-        <section className="grid gap-12 md:grid-cols-2">
-          <div>
-            <h2 className="mono-label mb-4">Release practices</h2>
-            <SkillChips items={releasePractices} />
-          </div>
-          <div>
-            <h2 className="mono-label mb-4">Testing & quality</h2>
-            <SkillChips items={testingPractices} />
-          </div>
-        </section>
+            <AccordionItem value="release">
+              <AccordionTrigger className="text-left text-lg font-medium tracking-tight hover:no-underline">
+                Release practices & testing
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid gap-10 md:grid-cols-2">
+                  <div>
+                    <h3 className="mono-label mb-4">Release practices</h3>
+                    <SkillChips items={releasePractices} />
+                  </div>
+                  <div>
+                    <h3 className="mono-label mb-4">Testing & quality</h3>
+                    <SkillChips items={testingPractices} />
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
 
-        <section>
-          <h2 className="mono-label mb-4">
-            Hosting & infrastructure decisions
-          </h2>
-          <p className="mb-5 max-w-2xl text-sm text-muted-foreground">
-            Cloud infrastructure is not one-size-fits-all. Options are compared
-            against real operational constraints—including AWS, Azure, and
-            Windows 365 when evaluating remote development environments.
-          </p>
-          <SkillChips items={hostingDecisionCriteria} />
+            <AccordionItem value="hosting" className="border-b-0">
+              <AccordionTrigger className="text-left text-lg font-medium tracking-tight hover:no-underline">
+                Hosting & infrastructure decisions
+              </AccordionTrigger>
+              <AccordionContent>
+                <p className="mb-5 max-w-2xl text-sm text-muted-foreground">
+                  Cloud infrastructure is not one-size-fits-all. Options are
+                  compared against real operational constraints—including
+                  AWS, Azure, and Windows 365 when evaluating remote
+                  development environments.
+                </p>
+                <SkillChips items={hostingDecisionCriteria} />
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </section>
 
         <p className="max-w-3xl border-t border-border pt-10 text-base leading-relaxed text-foreground md:text-lg">

@@ -3,7 +3,13 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDownRight, Download, Layers } from "lucide-react";
-import { site } from "@/data/site";
+import { site, experience } from "@/data/site";
+import { workItems } from "@/data/projects";
+import { StatCounter } from "@/Components/stat-counter";
+
+const companiesCount = new Set(experience.map((item) => item.company)).size;
+const systemsShipped = workItems.length;
+const yearsExperience = Number.parseInt(site.yearsExperience, 10) || 0;
 
 export default function Hero() {
   return (
@@ -95,6 +101,17 @@ export default function Hero() {
             <Download size={16} />
             Download CV
           </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.65 }}
+          className="mt-4 flex flex-wrap gap-x-10 gap-y-6 border-t border-border pt-8"
+        >
+          <StatCounter value={yearsExperience} suffix="+" label="Years experience" />
+          <StatCounter value={companiesCount} label="Companies & clients" />
+          <StatCounter value={systemsShipped} suffix="+" label="Production systems shipped" />
         </motion.div>
       </div>
     </section>
