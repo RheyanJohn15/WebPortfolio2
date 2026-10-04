@@ -35,6 +35,17 @@ export const workItems: WorkItem[] = [
     category: "major",
   },
   {
+    id: "akruals",
+    title: "Akruals",
+    description:
+      "Cloud accounting platform for small businesses — bookkeeping, invoicing, CRM, authentication, and subscription billing on Next.js and ASP.NET Core.",
+    href: "/work/akruals",
+    logo: "/logos/akruals.png",
+    tech: ["Next.js", "ASP.NET Core", "MySQL", "TypeScript", "C#"],
+    featured: true,
+    category: "major",
+  },
+  {
     id: "coresupporthub",
     title: "Core Support Hub",
     description:

@@ -7,7 +7,7 @@ export const site = {
   heroSupport:
     "2+ years building and operating production systems end-to-end — architecture, full-stack delivery, cloud infrastructure, security, and AI-powered business workflows.",
   summary:
-    "Software Engineer with 2+ years of professional experience as a Full Stack Developer, DevOps Engineer, and technical product builder from the Philippines. Focused on production-ready web applications, SaaS platforms, ERP and business systems, recruitment platforms, AI-powered products, APIs, and cloud infrastructure.",
+    "Software Engineer and Full-Stack Developer with experience building scalable SaaS and enterprise applications using Laravel, Next.js, React, Vue.js, PostgreSQL, and cloud technologies. Skilled in software development, system architecture, DevOps, CI/CD, Linux, and cloud infrastructure, with a strong focus on delivering reliable, maintainable, and production-ready solutions.",
   about: [
     "I work across the entire software development lifecycle—from understanding business requirements and designing system architecture, to building frontend applications, developing backend APIs, managing databases, integrating third-party services, establishing CI/CD pipelines, deploying systems, securing infrastructure, troubleshooting production issues, and continuously improving the product.",
     "My strength is not being limited to one layer of the stack. I’m comfortable taking ownership of a complete system and making decisions across frontend architecture, backend architecture, databases, infrastructure, deployment, integrations, security, performance, user experience, analytics, and operational reliability.",
@@ -17,7 +17,7 @@ export const site = {
   resumePath: "/ResumeRheyanJohnBlanco.pdf",
   contact: {
     email: "rheyanjohnblancogwapo@gmail.com",
-    phone: "+639275333250",
+    phone: "+639917584477",
     linkedin: "https://www.linkedin.com/in/rheyan-john-blanco-256090287/",
     github: "https://github.com/RheyanJohn15",
   },
@@ -61,6 +61,18 @@ export const experience: ExperienceItem[] = [
       "Led global technology operations, overseeing IT infrastructure, technical support, software development, and digital platforms supporting recruitment operations.",
       "Architected and developed the Click Match recruitment platform, enabling job seekers to manage applications and clients to create and manage job postings, alongside internal recruitment tools and workflows.",
       "Managed cloud infrastructure, integrations, deployments, and company systems, partnering with leadership to implement scalable technology solutions and improve operational efficiency.",
+    ],
+  },
+  {
+    id: "akruals",
+    role: "Software Engineer",
+    company: "Akruals",
+    logo: "/logos/akruals.png",
+    dates: "Jun 2024 – Present",
+    bullets: [
+      "Owned frontend development and contributed to backend engineering for Akruals using Next.js, ASP.NET Core 10, and MySQL, with primary ownership of the CRM module.",
+      "Designed and implemented authentication and subscription billing flows, ensuring secure and reliable user and subscription management.",
+      "Contributed to technical decision-making and application architecture, helping shape scalable solutions across the platform.",
     ],
   },
   {

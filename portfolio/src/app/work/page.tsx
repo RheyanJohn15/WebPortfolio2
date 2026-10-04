@@ -9,7 +9,7 @@ import { workItems } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Selected work — Tikrr ERP, Click Global Talent recruitment platform, and production client systems.",
+    "Selected work — Tikrr ERP, Click Match, Akruals, and production client systems.",
 };
 
 export default function WorkPage() {

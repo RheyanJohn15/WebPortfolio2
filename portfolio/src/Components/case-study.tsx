@@ -39,6 +39,16 @@ export function CaseStudyView({ study }: CaseStudyViewProps) {
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           {study.outcome}
         </p>
+        {study.externalUrl && (
+          <a
+            href={study.externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.14em] text-accent"
+          >
+            Visit live site →
+          </a>
+        )}
 
         <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-y border-border py-6">
           <div>

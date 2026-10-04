@@ -20,6 +20,7 @@ export type CaseStudy = {
   extras?: string[];
   relatedRoles: string[];
   href: string;
+  externalUrl?: string;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -191,6 +192,77 @@ export const caseStudies: CaseStudy[] = [
     ],
     relatedRoles: ["VP of Global Technology — Click Global Talent"],
     href: "/work/click",
+  },
+  {
+    id: "akruals",
+    slug: "akruals",
+    title: "Akruals",
+    company: "Akruals",
+    logo: "/logos/akruals.png",
+    outcome:
+      "A cloud accounting platform for small businesses—bookkeeping, invoicing, CRM, and tax-ready financial workflows—with secure authentication and subscription billing.",
+    summary: [
+      "Akruals is cloud-based accounting software for solopreneurs, freelancers, startups, contractors, and professional service providers across markets including the U.S. and Australia.",
+      "Work centered on frontend ownership and backend contribution across the CRM module, authentication, and subscription billing—shaping how users manage customers, access the product, and stay on paid plans.",
+    ],
+    architecture: [
+      "Next.js frontend with ASP.NET Core 10 APIs and MySQL",
+      "CRM as a core domain module with customer and relationship workflows",
+      "Authentication and session flows for secure multi-user access",
+      "Subscription billing flows for plan management and monetization",
+    ],
+    modules: [
+      {
+        name: "CRM",
+        description:
+          "Customer relationships and related business workflows inside the accounting platform.",
+      },
+      {
+        name: "Authentication",
+        description:
+          "Secure user access and account management flows.",
+      },
+      {
+        name: "Subscription Billing",
+        description:
+          "Plan and billing flows for production SaaS monetization.",
+      },
+      {
+        name: "Bookkeeping & Invoicing",
+        description:
+          "Product surface for bookkeeping, invoicing, and financial reporting workflows.",
+      },
+    ],
+    workflows: [
+      "User authentication",
+      "Account management",
+      "CRM / customer management",
+      "Subscription signup",
+      "Plan and billing management",
+      "Invoicing",
+      "Bookkeeping workflows",
+      "Financial reporting",
+    ],
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "ASP.NET Core 10",
+      "C#",
+      "MySQL",
+      "REST APIs",
+    ],
+    ownership: [
+      "Frontend development ownership",
+      "CRM module ownership",
+      "Authentication flow design and implementation",
+      "Subscription billing flows",
+      "Backend engineering contributions",
+      "Technical decision-making and application architecture",
+    ],
+    relatedRoles: ["Software Engineer — Akruals"],
+    href: "/work/akruals",
+    externalUrl: "https://akruals.com",
   },
 ];
 

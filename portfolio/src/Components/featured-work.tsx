@@ -20,7 +20,7 @@ export default function FeaturedWork() {
         <SectionHeading
           eyebrow="02 — Portfolio"
           title="Selected Work"
-          description="Major platforms and production systems — case studies for Tikrr and Click, plus shipped client software."
+          description="Major platforms and production systems — case studies for Tikrr, Click Match, and Akruals, plus shipped client software."
           actionHref="/work"
           actionLabel="All work"
         />
